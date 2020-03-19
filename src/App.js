@@ -49,7 +49,7 @@ export default class App extends Component
   {
     try
     {
-      let token = await this.state.sdk.getSecurityToken({symbol: 'TK-PTT'});
+      let token = await this.state.sdk.getSecurityToken({symbol: 'TK-M'});
       let STOs = await token.issuance.offerings.getStos()
 
       STOs = STOs.filter(sto => sto.stoType === 'Tiered');
@@ -72,14 +72,12 @@ export default class App extends Component
       **/
 
       let {STO} = this.state;
-      console.log(`************STO Address = `, STO.stableCoinAddresses[0]);
-      console.log(`************STO Currencies = `, STO.fundraiseCurrencies);
 
       let params = 
       {
         currency: 2,
-        amount: new BigNumber(5000),
-        minTokens: new BigNumber(3),
+        amount: new BigNumber(1000),
+        minTokens: new BigNumber(1),
         stableCoinAddress: STO.stableCoinAddresses[0],
         // beneficiary?: string,
       }
@@ -89,7 +87,7 @@ export default class App extends Component
       
       console.log(`**********STO Invest Response = `, ret);
 
-    //   return;
+      return;
     // }catch(e) {alert(e)}
   }
 
